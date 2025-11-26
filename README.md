@@ -6,8 +6,6 @@ This repository is still under construction. If you have any questions, contact 
 
 **Abstract:**  We introduce the self-projecting Grassmannian, an irreducible subvariety of the Grassmannian parametrizing linear subspaces that satisfy a generalized self-duality condition. We study its relation to classical moduli spaces, such as the moduli spaces of pointed curves of genus $g$, as well as to other natural subvarieties of the Grassmannian. We further translate the self-projectivity condition into the combinatorial language of matroids, introducing self-projecting matroids, and we computationally investigate their realization spaces inside the self-projecting Grassmannian.
 
-
-
 For the cases {(2,4),(3,6),(4,8),(5,10)} the database stores material from the  article:
 Alheydis Geiger, Sachi Hashimoto, Bernd Sturmfels, Raluca Vlad: Self-dual matroids from canonical curves
 In: Experimental mathematics, 33 (2024) 4, p. 701-722
@@ -33,7 +31,25 @@ The dimensions of the self-projecting realization spaces for self-projecting ran
 ```
 
 **Example 4.12**
-
+In order to work with the database and/or compute selfprojecting realization spaces of matroids in OSCAR, you need to use the developers version of OSCAR on the branch ag/selfprojecting_matroids on <https://github.com/AlheydisGeiger/Oscar.jl/tree/ag/selfprojecting_matroids>.
+To reproduce examplke 4.12 you can then run the following code:
+```
+julia> using Oscar
+julia> load("your/path/to/r_4_n_9_index_5985.jl")
+The matroid is of rank 4 on 9 elements.
+The realization space is
+  [1   0   0   0   2//3   0      1   1   1//2]
+  [0   1   0   0      0   2   1//2   1   1//2]
+  [0   0   1   0      1   1      1   1      1]
+  [0   0   0   1      2   2      2   1      1]
+in the multivariate polynomial ring in 20 variables over QQ
+within the vanishing set of the ideal
+Ideal with 20 generators
+avoiding the zero loci of the polynomials
+RingElem[2]
+The matroid does not have a self-projecting realization over characteristic zero.
+The closures of the realization space and the self-projecting realization space are not equal.
+```
 
 
 Project contributors: Alheydis Geiger, Francesca Zaffalon.
