@@ -14,6 +14,10 @@ Alheydis Geiger, Sachi Hashimoto, Bernd Sturmfels, Raluca Vlad: Self-dual matroi
 In: Experimental mathematics, 33 (2024) 4, p. 701-722
 DOI: `10.1080/10586458.2023.2239282 <https://dx.doi.org/10.1080/10586458.2023.2239282>`_ ARXIV: https://arxiv.org/abs/2212.05910 CODE: https://github.com/sachihashimoto/self-dual
 
+## Computations in magma
+The code for the computations in magma are stored in the directory magma_computations. The outputfiles are stored in the directory magma_output. The section on Code for Oscar.jl shows one possibility how to deal with these outputfiles. The inputfiles for the magma computations are stored in the directory nonbases.
+
+
 ## Code for Oscar.jl 
 The handling of the magma output was done using the open source computeralgebra research system Oscar, a package for the programming language julia.
 The following explains how to use the code in the directory code_for_OSCAR to obtain the tables and examples from the paper.
@@ -96,7 +100,7 @@ Corresponding author of this page: Alheydis Geiger,
 
  
 Software used: Magma (V2.27), Julia (Version 1.12.1), OSCAR (version 1.6.0-DEV), 
-GNU parallel 20221122, Macaulay2 (version 1.24.11)
+GNU parallel 20221122
 
 Project page created 18/11/2025.
-Last updated 26/11/2025.
+Last updated 04/12/2025.
