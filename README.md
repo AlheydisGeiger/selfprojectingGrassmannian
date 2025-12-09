@@ -1,6 +1,6 @@
 # selfprojectingGrassmannian
 This GitHub page accompanies the paper "The Self-Projecting Grassmannian" by Alheydis Geiger and Francesca Zaffalon.
-arXiv: <https://arxiv.org/abs/2511.21442)>
+arXiv: <https://arxiv.org/abs/2511.21442>
 
  It contains output files and code from the computations in Section 4 and 5, as well as the database of (self-projecting) realization spaces of self-projecting matroids of rank k on n elments over characteristic zero for (k,n) in {(2,4),...,(2,12),(3,6),(3,7),(3,8),(4,8),(4,9),(5,10)}.
 
