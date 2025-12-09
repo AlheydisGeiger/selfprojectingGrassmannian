@@ -4,4 +4,3 @@ This directory contains the nonbases for all selfprojecting matroids considered 
 For rank 3 and bigger the matroids are simple. The matroids defined by the nonbases in the files `nonbaseskn` are all framed, i.e. they have a circuit of size $n+1$. 
 The unframed matroids (only applicable for the cases(4,8), (4,9) and (5,10) ) are in extra files.
 
-This directory is still under construction. The cases for rank 5 are still missing. If you have questions, contact the authors.
