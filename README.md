@@ -2,10 +2,9 @@
 This GitHub page accompanies the paper "The Self-Projecting Grassmannian" by Alheydis Geiger and Francesca Zaffalon.
 arXiv: <https://arxiv.org/abs/2511.21442>
 
- It contains output files and code from the computations in Section 4 and 5, as well as the database of (self-projecting) realization spaces of self-projecting matroids of rank k on n elments over characteristic zero for (k,n) in {(2,4),...,(2,12),(3,6),(3,7),(3,8),(4,8),(4,9),(5,10)}.
+It contains output files and code from the computations in Section 4 and 5, as well as the database of (self-projecting) realization spaces of self-projecting matroids of rank k on n elments over characteristic zero for (k,n) in {(2,4),...,(2,12),(3,6),(3,7),(3,8),(4,8),(4,9),(5,10)}.
 
 This repository is still under construction. If you have any questions, contact the authors.
-
 
 **Abstract:**  We introduce the self-projecting Grassmannian, an irreducible subvariety of the Grassmannian parametrizing linear subspaces that satisfy a generalized self-duality condition. We study its relation to classical moduli spaces, such as the moduli spaces of pointed curves of genus $g$, as well as to other natural subvarieties of the Grassmannian. We further translate the self-projectivity condition into the combinatorial language of matroids, introducing self-projecting matroids, and we computationally investigate their realization spaces inside the self-projecting Grassmannian.
 
@@ -15,18 +14,15 @@ In: Experimental mathematics, 33 (2024) 4, p. 701-722
 DOI: `10.1080/10586458.2023.2239282 <https://dx.doi.org/10.1080/10586458.2023.2239282>`_ ARXIV: https://arxiv.org/abs/2212.05910 CODE: https://github.com/sachihashimoto/self-dual
 
 ## Computations in magma
-The code for the computations in magma are stored in the directory magma_computations. The outputfiles are stored in the directory magma_output. The section on Code for Oscar.jl shows one possibility how to deal with these outputfiles. The inputfiles for the magma computations are stored in the directory nonbases.
-
+The code for the computations in magma is stored in the directory `magma_computations/`. The outputfiles are stored in the directory `magma_output/`. The section on Code for Oscar.jl shows one possibility how to deal with these outputfiles. The inputfiles for the magma computations are stored in the directory `nonbases/`.
 
 ## Code for Oscar.jl 
 The handling of the magma output was done using the open source computeralgebra research system Oscar, a package for the programming language julia.
-The following explains how to use the code in the directory code_for_OSCAR to obtain the tables and examples from the paper.
-
+The following explains how to use the code in the directory `code_for_OSCAR` to obtain the tables and examples from the paper.
 
 **Tables 2 and 3**
-
 These tables show the distribution of the dimension of the (self-projecting) realization spaces for matroids of rank k on n elements, for which the realization spaces were computed.
-The code is included in the file ``generating_tables.jl``. There are two functions, one for the dimensions of the realization spaces, in the article denoted by $\mathcal{R}$, and one for the dimensions of the self-projeting realization spaces $\mathcal{S}$; see Definition 4.8.
+The code is included in the file `generating_tables.jl`. There are two functions, one for the dimensions of the realization spaces, in the article denoted by $\mathcal{R}$, and one for the dimensions of the self-projeting realization spaces $\mathcal{S}$; see Definition 4.8.
 
 The functions need to access the magma output files, stored in the magma directory of this gitHub repository. These files need to be downloaded in order to reproduce the tables.
 
@@ -71,7 +67,6 @@ julia> length(find_all_realizable_not_sp_realizable("realisation_output/rank4/rk
 
 
 **Example 4.12**
-
 In order to work with the database and/or compute self-projecting realization spaces of matroids in OSCAR, you need to use the developers version of OSCAR on the branch ag/selfprojecting_matroids on <https://github.com/AlheydisGeiger/Oscar.jl/tree/ag/selfprojecting_matroids>.
 To reproduce example 4.12 you need to download the relevant file from the database directory of this gitHub repository. Then you can run the following code:
 ```
@@ -92,6 +87,15 @@ The matroid does not have a self-projecting realization over characteristic zero
 The closures of the realization space and the self-projecting realization space are not equal.
 ```
 
+## Code for positroid computations
+The code for the computations of positroids and the outputs are stored in the directory `selfprojecting_positroids/`. The positroids were constructed using their correspondence with bounded affine permutations and Grassmann necklace. The file `self_projecting_positroids.sage` provides some code to work with positroids.
+```
+sage: grassmann_necklace_from_bap([3, 5, 7, 6, 8, 10])
+[[1, 2, 4], [2, 3, 4], [3, 4, 5], [1, 4, 5], [1, 5, 6], [1, 2, 6]]
+sage: M = matroid_from_bap([3, 5, 7, 6, 8, 10])
+sage: list(M.nonbases())
+[frozenset({1, 2, 3}), frozenset({4, 5, 6})]
+```
 
 Project contributors: Alheydis Geiger, Francesca Zaffalon.
 
@@ -99,8 +103,8 @@ Corresponding author of this page: Alheydis Geiger,
 <a href="mailto:geiger\@mis.mpg.com">geiger\@mis.mpg.de</a>
 
  
-Software used: Magma (V2.27), Julia (Version 1.12.1), OSCAR (version 1.6.0-DEV), 
+Software used: Magma (V2.27), Julia (Version 1.12.1), OSCAR (version 1.6.0-DEV), Python (Version 3.12.5)
 GNU parallel 20221122
 
 Project page created 18/11/2025.
-Last updated 09/12/2025.
+Last updated 10/12/2025.
