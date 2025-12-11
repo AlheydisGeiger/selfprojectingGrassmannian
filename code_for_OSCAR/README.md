@@ -1,6 +1,6 @@
 ## Additional Code to verify Tables and Examples
 
-The following explains how to use the code at https://github.com/AlheydisGeiger/selfprojectingGrassmannian to obtain the tables and examples from the paper.
+The following explains how to use the code in this directory to obtain the tables and examples from the paper.
 
 **Tables 2 and 3**
 
