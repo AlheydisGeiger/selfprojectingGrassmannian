@@ -103,7 +103,7 @@ Corresponding author of this page: Alheydis Geiger,
 <a href="mailto:geiger\@mis.mpg.com">geiger\@mis.mpg.de</a>
 
  
-Software used: Magma (V2.27), Julia (Version 1.12.1), OSCAR (version 1.6.0-DEV), Python (Version 3.12.5)
+Software used: Magma (V2.27), Julia (Version 1.12.1), OSCAR (version 1.6.0-DEV), Python (Version 3.12.5),
 GNU parallel 20221122
 
 Project page created 18/11/2025.
