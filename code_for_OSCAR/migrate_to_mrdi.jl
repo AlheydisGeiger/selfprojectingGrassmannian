@@ -78,12 +78,12 @@ function create_mrdi(inputfile::String,inputfile2::String,k::Int,n::Int;notallte
                     error("not realizable matroid has Groebner basis not equal to 1.")
                 end
                 m = matroid_from_bases(eval(Meta.parse(extract_entry(line,2))),n)
-                #In this case I cannot compute tbe basisminors as we do it usually, but there should still be inequations. Therefore, we use the oscar function to compute the realization_space and hope that it is not too slow!
+                #In this case I cannot compute tbe Oscar.basis_minors as we do it usually, but there should still be inequations. Therefore, we use the oscar function to compute the realization_space and hope that it is not too slow!
                 #MRS = realization_space(m,char = 0, ground_ring = QQ)
                 #MRSSP=Oscar.MatroidRealizationSpaceSelfProjecting(defining_ideal(MRS),inequations(MRS),R,nothing,0,nothing,QQ);
-                MRS = Oscar.MatroidRealizationSpace(ideal(R,gb1),#basisminors(M,bases(m)),
+                MRS = Oscar.MatroidRealizationSpace(ideal(R,gb1),#Oscar.basis_minors(M,bases(m)),
                 Vector{RingElem}(),R,nothing,0,nothing,QQ);
-                MRSSP=Oscar.MatroidRealizationSpaceSelfProjecting(ideal(R,gb2),#basisminors(M,bases(m)),
+                MRSSP=Oscar.MatroidRealizationSpaceSelfProjecting(ideal(R,gb2),#Oscar.basis_minors(M,bases(m)),
                 Vector{RingElem}(),R,nothing,0,nothing,QQ);
             elseif iszero(M) && dimR >= 0 #realizable without selfprojecting realization
                 open(inputfile2,"r") do file2
@@ -99,7 +99,7 @@ function create_mrdi(inputfile::String,inputfile2::String,k::Int,n::Int;notallte
                             S, p = quo(R, ideal(R,gb1_r));
                             M_r = matrix(R,eval(Meta.parse(extract_entry_onlyR(line2,8))))
                             m_r = build_matroid(p.(M_r),k,n)
-                            MRS = Oscar.MatroidRealizationSpace(ideal(R,gb1_r),basisminors(M_r,bases(m_r)),R,M_r,0,nothing,QQ);
+                            MRS = Oscar.MatroidRealizationSpace(ideal(R,gb1_r),Oscar.basis_minors(M_r,bases(m_r)),R,M_r,0,nothing,QQ);
                             MRSSP=Oscar.MatroidRealizationSpaceSelfProjecting(ideal(R,gb2),inequations(MRS),R,nothing,0,nothing,QQ);
                             if !is_isomorphic(m_r,matroid_from_bases(eval(Meta.parse(extract_entry_onlyR(line2,2))),n))
                                 error("the two matroids are not isomorphic!")
@@ -110,7 +110,7 @@ function create_mrdi(inputfile::String,inputfile2::String,k::Int,n::Int;notallte
                 end
             elseif dimS < dimR && dimS>=0 # S is a proper nonempty subset of R
                 m = build_matroid(q.(M),k,n)
-                MRSSP=Oscar.MatroidRealizationSpaceSelfProjecting(ideal(R,gb2),basisminors(M,bases(m)),R,M,0,nothing,QQ)
+                MRSSP=Oscar.MatroidRealizationSpaceSelfProjecting(ideal(R,gb2),Oscar.basis_minors(M,bases(m)),R,M,0,nothing,QQ)
                 open(inputfile2,"r") do file2
                     for line2 in eachline(file2) 
                         id2 = eval(Meta.parse(extract_entry_onlyR(line2,1)))
@@ -119,7 +119,7 @@ function create_mrdi(inputfile::String,inputfile2::String,k::Int,n::Int;notallte
                             S, p = quo(R, ideal(R,gb1));
                             M_r = matrix(R,eval(Meta.parse(extract_entry_onlyR(line2,8))))
                             m_r = build_matroid(p.(M_r),k,n)
-                            MRS = Oscar.MatroidRealizationSpace(ideal(R,gb1),basisminors(M_r,bases(m_r)),R,M_r,0,nothing,QQ);
+                            MRS = Oscar.MatroidRealizationSpace(ideal(R,gb1),Oscar.basis_minors(M_r,bases(m_r)),R,M_r,0,nothing,QQ);
                             dimR2 = eval(Meta.parse(extract_entry_onlyR(line2,4)))
                             #sanity check
                             if !(dimR == dimR2)
@@ -136,8 +136,8 @@ function create_mrdi(inputfile::String,inputfile2::String,k::Int,n::Int;notallte
                     error("The dimesion of R and S are not the same, but none of the other elseif's applied! Something is wrong!")
                 end
                 m = build_matroid(p.(M),k,n)
-                MRS = Oscar.MatroidRealizationSpace(ideal(R,gb1),basisminors(M,bases(m)),R,M,0,nothing,QQ);
-                MRSSP=Oscar.MatroidRealizationSpaceSelfProjecting(ideal(R,gb2),basisminors(M,bases(m)),R,M,0,nothing,QQ)
+                MRS = Oscar.MatroidRealizationSpace(ideal(R,gb1),Oscar.basis_minors(M,bases(m)),R,M,0,nothing,QQ);
+                MRSSP=Oscar.MatroidRealizationSpaceSelfProjecting(ideal(R,gb2),Oscar.basis_minors(M,bases(m)),R,M,0,nothing,QQ)
             end
             # I need to make dimS and dimR = -1 in the case that they are negative
             if dimS <0
@@ -166,7 +166,7 @@ function create_mrdi(inputfile::String,inputfile2::String,k::Int,n::Int;notallte
                 if dimR >=0
                     M_r = matrix(R,eval(Meta.parse(extract_entry_onlyR(line,8))))
                     m = build_matroid(p.(M_r),k,n)
-                    MRS = Oscar.MatroidRealizationSpace(ideal(R,gb1_r),Oscar.basisminors(M_r,bases(m)),R,M_r,0,nothing,QQ);
+                    MRS = Oscar.MatroidRealizationSpace(ideal(R,gb1_r),Oscar.basis_minors(M_r,bases(m)),R,M_r,0,nothing,QQ);
                 else 
                     m = matroid_from_bases(eval(Meta.parse(extract_entry_onlyR(line,2))),n)
                     MRS = Oscar.MatroidRealizationSpace(ideal(R,gb1_r),Vector{RingElem}(),R,nothing,0,nothing,QQ);
